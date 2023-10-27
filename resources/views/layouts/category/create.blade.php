@@ -1,0 +1,37 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header"><strong>{{ __('Create Category') }}</strong>
+                    <a href="{{route('home')}}"> Back </a>
+                </div>
+
+
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    <form autocomplete="off" action="{{route('category.store')}}" method="POST">
+                        @csrf
+                        <div class="form-group mb-2">
+                            <label for="title">Title</label>
+                            <input type="text" class="form-control" id="title" name="title" placeholder="Enter title...">
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="short_desc">Short Description</label>
+                            <textarea type="text" class="form-control" id="short_desc" name="short_desc" placeholder="Enter title..."></textarea>
+                        </div>
+                        <button class="btn btn-primary" name="createTitle" type="submit">Create</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
