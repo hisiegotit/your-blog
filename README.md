@@ -12,3 +12,8 @@
 8. `npm run dev`
 9. `php artisan serve`
 10. Visit `localhost:8000` in your browser
+
+## Account (run `php artisan migrate --seed`)
+email: admin@example.com
+
+password: 123123123
