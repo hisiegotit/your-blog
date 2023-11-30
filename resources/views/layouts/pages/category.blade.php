@@ -9,16 +9,6 @@
                 </div>
                 <div class="about-two">
                     <p>{{$category->short_desc}}</p>
-                    <ul>
-                        <li>
-                            <p>Share : </p>
-                        </li>
-                        <li><a href="#"><span class="fb"> </span></a></li>
-                        <li><a href="#"><span class="twit"> </span></a></li>
-                        <li><a href="#"><span class="pin"> </span></a></li>
-                        <li><a href="#"><span class="rss"> </span></a></li>
-                        <li><a href="#"><span class="drbl"> </span></a></li>
-                    </ul>
                 </div>
                 <div class="about-tre">
                     @foreach ($posts as $post)
@@ -26,7 +16,11 @@
                         <div class="row" style="margin: 2px 2px">
                             <a href="{{route('post.show', $post->id)}}">
                                 <div class="col-md-6 abt-left">
-                                    <img src="{{asset('uploads/' . $post->image)}}" alt="{{Str::slug($post->title)}}"/>
+                                    @if (filter_var($post->image, FILTER_VALIDATE_URL) !== false)
+                                    <img src="{{ asset($post->image) }}" alt="{{Str::slug($post->title)}}">
+                                    @else
+                                    <img src="{{ asset('uploads/' . $post->image) }}" alt="{{Str::slug($post->title)}}">
+                                    @endif
                                 </div>
                                 <div class="col-md-6 abt-left">
                                     <h6>{{$post->category->title}}</h6>
@@ -47,7 +41,11 @@
                     @foreach ($newest_posts as $newest_post)
                     <div class="might-grid">
                         <div class="grid-might">
-                            <a href="single.html"><img src="{{asset('uploads/' . $newest_post->image)}}" class="img-responsive" alt=""> </a>
+                            @if (filter_var($post->image, FILTER_VALIDATE_URL) !== false)
+                            <a href="#"><img class="img-responsive" src="{{ asset($post->image) }}" alt=" "></a>
+                            @else
+                            <a href="#"><img class="img-responsive" src="{{ asset('uploads/' . $post->image) }}" alt=" "></a>
+                            @endif
                         </div>
                         <div class="might-top">
                             <h4><a href="{{route('post.show', $newest_post->id)}}" title="{{$newest_post->title}}">{{substr($newest_post->title, 0, 23)}}...</a></h4>

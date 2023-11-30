@@ -22,7 +22,7 @@ use App\Http\Controllers\SinglePostController;
 
 Route::get('/', [HomeController::class, 'index']);
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::get('/dashboard', [LoginController::class, 'index'])->name('home');
 
@@ -35,6 +35,3 @@ Route::resource('post', PostController::class);
 Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/search', [HomeController::class, 'search']);
-
-
-Route::get('/post/{id}', [SinglePostController::class, 'show']);

@@ -5,6 +5,9 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Customer;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\App;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -12,12 +15,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Customer::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        \App\Models\User::create([
+            'name' => 'Hisie',
+            'email' => 'admin@example.com',
+            'password' => bcrypt('123123123'),
+        ]);
 
         \App\Models\Category::create([
             'title' => 'Technology',
@@ -32,5 +35,7 @@ class DatabaseSeeder extends Seeder
             'title' => 'Music',
             'short_desc' => 'Explore the vibrant world of music, where rhythm meets emotion.',
         ]);
+
+        \App\Models\Post::factory(20)->create();
     }
 }

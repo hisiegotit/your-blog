@@ -35,7 +35,6 @@ class SinglePostController extends Controller
      */
     public function show(string $id)
     {
-        return view('layouts.details');
     }
 
     /**

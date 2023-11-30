@@ -11,7 +11,11 @@
                         <div class="row" style="margin: 5px">
                             <a href="{{route('post.show', $post->id)}}">
                                 <div class="col-md-6 abt-left">
-                                    <img src="{{asset('uploads/' . $post->image)}}" alt="{{Str::slug($post->title)}}"/>
+                                    @if (filter_var($post->image, FILTER_VALIDATE_URL) !== false)
+                                    <img src="{{ asset($post->image) }}" alt="{{Str::slug($post->title)}}">
+                                    @else
+                                    <img src="{{ asset('uploads/' . $post->image) }}" alt="{{Str::slug($post->title)}}">
+                                    @endif
                                 </div>
                                 <div class="col-md-6 abt-left">
                                     <h6>{{$post->category->title}}</h6>
@@ -31,7 +35,11 @@
                     @foreach ($newest_posts as $newest_post)
                     <div class="might-grid">
                         <div class="grid-might">
-                            <a href="single.html"><img src="{{asset('uploads/' . $newest_post->image)}}" class="img-responsive" alt=""> </a>
+                            @if (filter_var($post->image, FILTER_VALIDATE_URL) !== false)
+                            <a href="{{route('post.show', $newest_post->id)}}"><img src="{{asset($newest_post->image)}}" class="img-responsive" alt=""> </a>
+                            @else
+                            <a href="{{route('post.show', $newest_post->id)}}"><img src="{{asset('uploads/' . $newest_post->image)}}" class="img-responsive" alt=""> </a>
+                            @endif
                         </div>
                         <div class="might-top">
                             <h4><a href="{{route('post.show', $newest_post->id)}}" title="{{$newest_post->title}}">{{substr($newest_post->title, 0, 23)}}...</a></h4>
@@ -45,7 +53,7 @@
                     <h3>MOST VIEWED</h3>
                     <ul>
                         @foreach ($most_view_posts as $most_view_post)
-                            <li><a href="{{route('post.show', $most_view_post->id)}}">{{$most_view_post->title}}</a></li>
+                        <li><a href="{{route('post.show', $most_view_post->id)}}">{{$most_view_post->title}}</a></li>
                         @endforeach
 
                     </ul>
@@ -54,8 +62,7 @@
                     <h3>NEWS LETTER</h3>
                     <div class="news">
                         <form>
-                            <input type="text" value="Email" onfocus="this.value = '';"
-                                onblur="if (this.value == '') {this.value = 'Email';}" />
+                            <input type="text" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" />
                             <input type="submit" value="Subscribe">
                         </form>
                     </div>
