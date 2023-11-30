@@ -15,4 +15,5 @@
 
 ## Account (run `php artisan migrate --seed`)
 email: admin@example.com
+
 password: 123123123
