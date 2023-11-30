@@ -1,5 +1,3 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://firebasestorage.googleapis.com/v0/b/image-storage-18130.appspot.com/o/logo-1.png?alt=media&token=9988ad3c-c0ad-4d11-9af5-c84ecbe30497" width="400" alt="Laravel Logo"></a></p>
-
 ## Installation
 
 1. Clone the repo and `cd` into it
